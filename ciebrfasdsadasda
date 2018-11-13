@@ -1,0 +1,106 @@
+/*
+private void btnEncritpar_Click(object sender, EventArgs e)
+        {
+            MemoryStream ms = new MemoryStream();
+            StreamWriter code = new StreamWriter(ms);
+            code.Write(txtTExt.Text);
+            code.Flush();
+
+            SHA1CryptoServiceProvider sha = new SHA1CryptoServiceProvider();
+            byte[] datos = sha.ComputeHash(ms.ToArray());
+            txtEncript.Text = "";
+            foreach(byte bt in datos)
+            {
+                txtEncript.Text += bt.ToString();
+            }
+        }
+          DESCryptoServiceProvider servicio = new DESCryptoServiceProvider();
+        byte[] key = new byte[] { 70, 71, 72, 73, 74, 75, 76, 77 };
+        byte[] iv = new byte[] { 60, 61, 62, 63, 64, 65, 66, 67 };
+private void btnEncriptat_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sv = new SaveFileDialog();
+            sv.Filter = "Archivo Cifrado|*.cyt";
+            if (sv.ShowDialog() == DialogResult.OK)
+            {
+                MemoryStream ms = new MemoryStream();
+                StreamWriter escritor = new StreamWriter(ms);
+                escritor.Write(txtS.Text);
+                escritor.Flush();
+
+                FileStream file = new FileStream(sv.FileName, FileMode.Create);
+                CryptoStream crypto = new CryptoStream(file,servicio.CreateEncryptor(key,iv), CryptoStreamMode.Write);
+                crypto.Write(ms.ToArray(), 0, ms.ToArray().Length);
+                crypto.Close();
+                file.Close();
+            }
+
+        }
+
+        private void brnDesencriptar_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            op.Filter = "Archivo de Encriptacion|*.cyt";
+            if (op.ShowDialog()==DialogResult.OK)
+            {
+                FileStream file = new FileStream(op.FileName, FileMode.Open);
+                CryptoStream decryt = new CryptoStream(file, servicio.CreateDecryptor(key, iv), CryptoStreamMode.Read);
+                byte[] datos = new byte[4096];
+                decryt.Read(datos, 0, datos.Length);
+
+                MemoryStream ms = new MemoryStream();
+                ms.Write(datos, 0, datos.Length);
+                ms.Position = 0;
+                txtS.Text = new StreamReader(ms).ReadToEnd();
+
+            }
+        }
+*/
+/*
+SqlConnection cn = new SqlConnection("server=.;database=Negocios2018;uid=sa;pwd=sql");
+private void btnConsulta_Click(object sender, EventArgs e)
+        {
+            string nombre = txtNombre.Text;
+            SqlDataAdapter da = new SqlDataAdapter("usp_clientes",cn);
+            da.SelectCommand.CommandType = CommandType.StoredProcedure;
+            da.SelectCommand.Parameters.AddWithValue("@nom", nombre);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dgClientes.DataSource = null;
+            dgClientes.DataSource = dt;
+
+        }
+//consulta con procedimiento
+private void button1_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("usp_addpais",cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@idpais", txtIdpais.Text);
+            cmd.Parameters.AddWithValue("@nombre", txtNomPais.Text);
+            cn.Open();
+            try
+            {
+                int i = cmd.ExecuteNonQuery();
+                MessageBox.Show(i.ToString() + "Registro");
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally {
+                cn.Close();
+            }
+            dgPais.DataSource = paises();
+
+        }
+ public DataTable paises() {
+            SqlDataAdapter da = new SqlDataAdapter("usppais", cn);
+            da.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+          
+        }
+
+*/
