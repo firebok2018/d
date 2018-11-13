@@ -102,5 +102,21 @@ private void button1_Click(object sender, EventArgs e)
             return dt;
           
         }
+        
+        create proc usp_addpais
+@idpais char(3),@nompais varchar(40)
+as insert tb_paises values (@idpais,@nompais)
+go
+create proc usp_updatepais
+@idpais char(3), @nompais varchar(40) 
+as update tb_paises 
+set NombrePais=@nompais where Idpais=@idpais
+go
+create procedure usp_clientes
+@nom varchar(50)
+as
+	select*from tb_clientes
+	where NombreCia like @nom+'%'
+go
 
 */
