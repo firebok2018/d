@@ -120,3 +120,47 @@ as
 go
 
 */
+/*
+private void button2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog zip = new SaveFileDialog();
+            zip.Filter = "Archivos comprimidos |*.zip";
+
+            if (zip.ShowDialog() == DialogResult.OK) {
+                MemoryStream ms = new MemoryStream();
+                StreamWriter escritor = new StreamWriter(ms);
+                escritor.Write(txtDatos.Text);
+                escritor.Flush();
+
+                FileStream f = new FileStream(zip.FileName, FileMode.Create);
+                GZipStream zipz = new GZipStream(f, CompressionMode.Compress);
+
+                zipz.Write(ms.ToArray(), 0,ms.ToArray().Length);
+                zipz.Close();
+                f.Close();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog zip = new SaveFileDialog();
+            zip.Filter = "Archivos comprimidos |*.zip";
+
+            if (zip.ShowDialog() == DialogResult.OK)
+            {
+                MemoryStream ms = new MemoryStream();
+                StreamWriter escritor = new StreamWriter(ms);
+                escritor.Write(txtDatos.Text);
+                escritor.Flush();
+
+                FileStream f = new FileStream(zip.FileName, FileMode.Create);
+                GZipStream zipz = new GZipStream(f, CompressionMode.Decompress);
+
+                zipz.Write(ms.ToArray(), 0, ms.ToArray().Length);
+                zipz.Close();
+                f.Close();
+
+            }
+        }
+
+
