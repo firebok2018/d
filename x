@@ -14,7 +14,7 @@ p.CiudadDestinatario AS [CIUDAD DESTINATARIO]
 on e.IdEmpleado= p.IdEmpleado
 
  go
-
+  SqlConnection cn = new SqlConnection("server =.;database=Negocios2018;uid=sa;pwd=sql");
  exec CONSULTA
  
   con.Open();
@@ -30,7 +30,12 @@ on e.IdEmpleado= p.IdEmpleado
             return dt;
    
         }
-  SqlConnection cn = new SqlConnection("server =.;database=Negocios2018;uid=sa;pwd=sql");
+        
+          cboPais.DataSource = Paises();
+            cboPais.DisplayMember = "nombrepais";
+            cboPais.ValueMember = "idpais";
+            
+
   private void button1_Click(object sender, EventArgs e)
         {
             string nombre = txtProducto.Text;
